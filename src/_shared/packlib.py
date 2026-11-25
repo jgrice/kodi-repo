@@ -145,10 +145,43 @@ def reset_home():
     switch_to_skin()
 
 
-def sign_in():
-    # POV's own "My Services" screen: pick TorBox or Trakt, then scan the QR code
-    # (or enter the code shown) on your phone. Pick an already-signed-in service to sign out.
+SERVICES = (("TorBox", "tb.token"), ("Trakt", "trakt.token"))
+
+
+def signed_in():
+    """Which of TorBox / Trakt POV has a token for (read fresh each time)."""
+    pov = xbmcaddon.Addon("plugin.video.pov")
+    return {name: bool(pov.getSetting(key)) for name, key in SERVICES}
+
+
+def run_my_services():
+    """Open POV's My Services list and wait until its dialogs (list, QR code, notices) close.
+    POV handles one service per opening, so sign_in() calls this once per service."""
     xbmc.executebuiltin("RunPlugin(plugin://plugin.video.pov/?mode=myservices)")
+    monitor = xbmc.Monitor()
+    for _ in range(40):  # up to 20 s for the list to appear
+        if xbmc.getCondVisibility("System.HasActiveModalDialog") or monitor.abortRequested():
+            break
+        monitor.waitForAbort(0.5)
+    wait_for_quiet(4)
+
+
+def sign_in():
+    """Walk through TorBox and Trakt in turn, reopening POV's list until both are signed in.
+    Picking an already-signed-in service in the list signs it out (for a stick you give away)."""
+    run_my_services()
+    while True:
+        status = signed_in()
+        missing = [name for name, ok in status.items() if not ok]
+        if not missing:
+            xbmcgui.Dialog().notification(NAME, "TorBox and Trakt are signed in", xbmcgui.NOTIFICATION_INFO, 4000)
+            return
+        done = [name for name, ok in status.items() if ok]
+        text = ("%s is signed in. " % " and ".join(done) if done else "") + \
+            "Sign in to %s now?\nPick it in the list, then scan the QR code with your phone." % " and ".join(missing)
+        if not xbmcgui.Dialog().yesno(NAME, text, nolabel="Later", yeslabel="Sign in"):
+            return
+        run_my_services()
 
 
 FIRST_RUN_MARKER = "special://profile/addon_data/%s/setup_done" % ADDON.getAddonInfo("id")
@@ -205,8 +238,10 @@ def wait_for_quiet(seconds=3):
 
 def offer_sign_in():
     wait_for_quiet()
+    if all(signed_in().values()):
+        return
     if xbmcgui.Dialog().yesno(NAME, "Sign in to TorBox and Trakt now?\n"
-                              "You'll scan a QR code with your phone for each."):
+                              "You'll scan a QR code with your phone for each, one after the other."):
         sign_in()
 
 
