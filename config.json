@@ -1,4 +1,5 @@
 {
   "site_url": "https://jgrice.github.io/kodi-repo/",
+  "data_url": "https://raw.githubusercontent.com/jgrice/kodi-repo/main/docs/",
   "output_dir": "docs"
 }

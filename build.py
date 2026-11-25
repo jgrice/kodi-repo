@@ -15,13 +15,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CFG = json.loads((ROOT / "config.json").read_text())
 SITE = CFG["site_url"].rstrip("/") + "/"
+# Where Kodi reads addons.xml / checksum / zips from. Kodi on Windows failed to read
+# the checksum from GitHub Pages, so the repo data is served from raw.githubusercontent.com.
+DATA = CFG.get("data_url", SITE).rstrip("/") + "/"
 OUT = ROOT / CFG["output_dir"]
 SRC = ROOT / "src"
 SHARED = SRC / "_shared"  # copied into every pack (non-repository add-on)
 
 
 def addon_xml(folder):
-    return (folder / "addon.xml").read_text(encoding="utf-8").replace("{SITE_URL}", SITE)
+    return (folder / "addon.xml").read_text(encoding="utf-8").replace("{SITE_URL}", DATA)
 
 
 def build():
@@ -62,7 +65,7 @@ def build():
     (OUT / "index.html").write_text(
         f'<!DOCTYPE html><html><body><a href="{repo_zip.name}">{repo_zip.name}</a></body></html>\n')
     (OUT / ".nojekyll").write_text("")
-    print(f"site ready in {OUT}  ->  {SITE}")
+    print(f"site ready in {OUT}  ->  {SITE} (Kodi data from {DATA})")
 
 
 if __name__ == "__main__":
