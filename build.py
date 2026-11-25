@@ -17,6 +17,7 @@ CFG = json.loads((ROOT / "config.json").read_text())
 SITE = CFG["site_url"].rstrip("/") + "/"
 OUT = ROOT / CFG["output_dir"]
 SRC = ROOT / "src"
+SHARED = SRC / "_shared"  # copied into every pack (non-repository add-on)
 
 
 def addon_xml(folder):
@@ -28,7 +29,7 @@ def build():
         shutil.rmtree(OUT)
     OUT.mkdir()
     entries, repo_zip = [], None
-    for folder in sorted(p for p in SRC.iterdir() if p.is_dir()):
+    for folder in sorted(p for p in SRC.iterdir() if p.is_dir() and not p.name.startswith("_")):
         xml = addon_xml(folder)
         root = ET.fromstring(xml.encode("utf-8"))
         aid, ver = root.get("id"), root.get("version")
@@ -36,9 +37,12 @@ def build():
         dest.mkdir()
         zpath = dest / f"{aid}-{ver}.zip"
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
-            for f in sorted(folder.rglob("*")):
+            files = [(f, folder) for f in folder.rglob("*")]
+            if not aid.startswith("repository.") and SHARED.exists():
+                files += [(f, SHARED) for f in SHARED.rglob("*")]
+            for f, base in sorted(files):
                 if f.is_file() and "__pycache__" not in f.parts:
-                    arc = f"{aid}/{f.relative_to(folder).as_posix()}"
+                    arc = f"{aid}/{f.relative_to(base).as_posix()}"
                     if f.name == "addon.xml":
                         z.writestr(arc, xml)
                     else:

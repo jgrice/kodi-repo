@@ -33,7 +33,7 @@
         <platform>all</platform>
     </extension>
 </addon>
-<addon id="script.jgrice.pack" name="Justin's Pack" version="1.0.0" provider-name="jgrice">
+<addon id="script.jgrice.pack.firestick" name="Justin's Pack (Fire Stick)" version="1.0.0" provider-name="jgrice">
     <!-- Everything listed here is installed (and kept updated) when the pack is installed.
          To change what every device gets: edit this list, bump version above, run build.py, push. -->
     <requires>
@@ -46,8 +46,26 @@
         <provides>executable</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary lang="en_GB">Installs Justin's add-on set and applies device settings</summary>
-        <description lang="en_GB">Installing this pulls in POV and its scrapers. Run it once from Program add-ons to apply recommended Fire Stick settings (cache size, safe update mode).</description>
+        <summary lang="en_GB">Justin's add-on set for Fire TV Stick</summary>
+        <description lang="en_GB">Installs POV and its scrapers. Run it once from Program add-ons to apply Fire Stick settings (128 MB cache, safe update mode).</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+<addon id="script.jgrice.pack.pc" name="Justin's Pack (PC)" version="1.0.0" provider-name="jgrice">
+    <!-- Everything listed here is installed (and kept updated) when the pack is installed.
+         To change what every device gets: edit this list, bump version above, run build.py, push. -->
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="plugin.video.pov"/>
+        <import addon="script.module.magneto"/>
+        <!-- <import addon="plugin.video.otaku"/> -->
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Justin's add-on set for Windows PC</summary>
+        <description lang="en_GB">Installs POV and its scrapers. Run it once from Program add-ons to apply PC settings (512 MB cache, safe update mode).</description>
         <platform>all</platform>
     </extension>
 </addon>
