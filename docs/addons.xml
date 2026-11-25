@@ -39,7 +39,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Justin's add-on set for Fire TV Stick</summary>
-        <description lang="en_GB">Installs POV and its scrapers. Run it once from Program add-ons to apply Fire Stick settings (128 MB cache, safe update mode).</description>
+        <description lang="en_GB">Installs POV and its scrapers. Open it from Program add-ons to sign in to TorBox / Trakt (QR code) and apply Fire Stick settings (128 MB cache, safe update mode).</description>
         <platform>all</platform>
     </extension>
 </addon>
@@ -56,7 +56,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Justin's add-on set for Windows PC</summary>
-        <description lang="en_GB">Installs POV and its scrapers. Run it once from Program add-ons to apply PC settings (512 MB cache, safe update mode).</description>
+        <description lang="en_GB">Installs POV and its scrapers. Open it from Program add-ons to sign in to TorBox / Trakt (QR code) and apply PC settings (512 MB cache, safe update mode).</description>
         <platform>all</platform>
     </extension>
 </addon>

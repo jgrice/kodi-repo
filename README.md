@@ -7,7 +7,7 @@ A personal Kodi repository that installs a lean POV-based add-on set on any devi
 | Add-on | What it does |
 |---|---|
 | `repository.jgrice` | Your repo. Also points Kodi at kodifitzwell's repo, so POV and Magneto install and update from the source. |
-| `script.jgrice.pack.firestick` ("Justin's Pack (Fire Stick)") | Empty add-on whose `<requires>` list is the add-on set: **POV + Magneto**. Running it from Program add-ons applies Fire Stick settings (128 MB cache, 6x read factor, safe update mode). |
+| `script.jgrice.pack.firestick` ("Justin's Pack (Fire Stick)") | Empty add-on whose `<requires>` list is the add-on set: **POV + Magneto**. Opening it gives a TorBox / Trakt sign-in shortcut and applies Fire Stick settings (128 MB cache, 6x read factor, safe update mode). |
 | `script.jgrice.pack.pc` ("Justin's Pack (PC)") | Same add-on set for Windows. Its settings use a 512 MB cache. |
 
 ## One-time setup (GitHub Pages)
@@ -25,8 +25,10 @@ If you use a different repo name, change `site_url` in `config.json` and rebuild
 2. Settings > File manager > Add source: `https://jgrice.github.io/kodi-repo/`, name it `jgrice`.
 3. Add-ons > Install from zip file > `jgrice` > `repository.jgrice-1.0.0.zip`.
 4. Add-ons > Install from repository > Justin's Kodi Repo > Program add-ons > **Justin's Pack (Fire Stick)** or **Justin's Pack (PC)** > Install. Kodi pulls in POV and Magneto.
-5. Open the pack once from Program add-ons and accept the settings prompt.
-6. Open POV and sign in to Real-Debrid / TorBox / Trakt on that device (no tokens ship in the pack).
+5. Open the pack from Program add-ons and choose **Apply device settings**.
+6. Open the pack again and choose **Sign in to TorBox / Trakt**. This opens POV's My Services list: pick TorBox, scan the QR code with your phone (or enter the code at the address shown), then do the same for Trakt. No keys or tokens ship in the pack.
+
+To sign a device out (e.g. a stick you're giving away), use the same menu and pick the signed-in service.
 
 ## Changing what devices get
 
