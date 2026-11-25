@@ -1,7 +1,6 @@
 {
   "label": "PC",
   "settings": {
-    "filecache.buffermode": 4,
     "filecache.memorysize": 512,
     "filecache.readfactor": 600,
     "addons.updatemode": 0

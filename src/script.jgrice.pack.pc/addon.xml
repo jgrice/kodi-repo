@@ -6,7 +6,6 @@
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="plugin.video.pov"/>
         <import addon="script.module.magneto"/>
-        <!-- <import addon="plugin.video.otaku"/> -->
     </requires>
     <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>

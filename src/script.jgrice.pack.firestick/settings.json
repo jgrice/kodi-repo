@@ -1,7 +1,6 @@
 {
   "label": "Fire Stick",
   "settings": {
-    "filecache.buffermode": 4,
     "filecache.memorysize": 128,
     "filecache.readfactor": 600,
     "addons.updatemode": 0

@@ -1,7 +1,6 @@
 """Justin's Pack: apply this pack's device settings once, from Program add-ons.
 
 Settings come from settings.json in the pack folder (Kodi 21 setting ids):
-  filecache.buffermode  4 = buffer all network filesystems
   filecache.memorysize  MB of RAM for the video buffer
   filecache.readfactor  fill speed as a multiple of bitrate, x100 (600 = 6x)
   addons.updatemode     0 = official add-ons only update from the official repo

@@ -32,7 +32,7 @@ If you use a different repo name, change `site_url` in `config.json` and rebuild
 
 Each pack lives in its own folder under `src/`:
 
-- `addon.xml`: the `<import>` list is the add-on set for that device type (Otaku is there commented out; its repo is commented out in `src/repository.jgrice/addon.xml`).
+- `addon.xml`: the `<import>` list is the add-on set for that device type. To add an add-on from a new source, also add that source's `<dir>` to `src/repository.jgrice/addon.xml`.
 - `settings.json`: the Kodi settings the pack applies when opened.
 
 `src/_shared/default.py` is the settings script, copied into every pack by `build.py`.
