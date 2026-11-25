@@ -25,11 +25,11 @@
         <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.search",return)</action>
     </shortcut>
     <shortcut>
-        <label>POV Settings</label>
+        <label>Settings</label>
         <label2>POV</label2>
         <defaultID>povsettings</defaultID>
         <icon>special://skin/extras/icons/gear.png</icon>
         <thumb />
-        <action>Addon.OpenSettings(plugin.video.pov)</action>
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.settings",return)</action>
     </shortcut>
 </shortcuts>

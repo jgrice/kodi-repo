@@ -108,8 +108,24 @@ def install_home_layout():
     xbmcvfs.delete(SHORTCUTS_DATA + SKIN + ".hash")
 
 
+# Arctic Horizon 2 skin options set on every device. Home.DisableSearchMenu hides the
+# skin's own search icon, since the home menu has POV's Search.
+SKIN_BOOLS = ("Home.DisableSearchMenu",)
+
+
+def apply_skin_settings():
+    """Skin settings only take while Arctic Horizon 2 is the active skin; returns True once set."""
+    if xbmc.getSkinDir() != SKIN:
+        return False
+    for name in SKIN_BOOLS:
+        if not xbmc.getCondVisibility("Skin.HasSetting(%s)" % name):
+            xbmc.executebuiltin("Skin.SetBool(%s)" % name)
+    return True
+
+
 def switch_to_skin():
     if xbmc.getSkinDir() == SKIN:
+        apply_skin_settings()
         xbmc.executebuiltin("ReloadSkin()")
         return True
     # Kodi asks "Keep this change?" after switching; the user confirms on screen.
@@ -143,6 +159,11 @@ def reset_home():
         return
     install_home_layout()
     switch_to_skin()
+
+
+def open_pov_settings():
+    """POV's own Settings menu (its settings, My Services, cache cleaning, view modes...)."""
+    xbmc.executebuiltin('ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.settings",return)')
 
 
 SERVICES = (("TorBox", "tb.token"), ("Trakt", "trakt.token"))
@@ -227,7 +248,7 @@ def menu():
     elif choice == 2:
         reset_home()
     elif choice == 3:
-        xbmc.executebuiltin("Addon.OpenSettings(plugin.video.pov)")
+        open_pov_settings()
 
 
 def wait_for_quiet(seconds=3):
