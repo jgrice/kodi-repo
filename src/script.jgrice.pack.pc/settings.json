@@ -22,7 +22,9 @@
     "widget_hide_watched": "true",
     "debug.enabled": "false",
     "nextep.sort_type": "1",
-    "nextep.sort_order": "0"
+    "nextep.sort_order": "0",
+    "results_quality_movie": "SD, 720p, 1080p, 4K",
+    "results_quality_episode": "SD, 720p, 1080p, 4K"
   },
   "disable_addons": [],
   "alternatives": {
