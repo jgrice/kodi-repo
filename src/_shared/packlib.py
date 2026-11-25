@@ -102,8 +102,13 @@ def install_home_layout():
     """Copy the POV home layout into Skin Shortcuts and force it to rebuild menus."""
     src = os.path.join(PATH, "home")
     xbmcvfs.mkdirs(SHORTCUTS_DATA)
+    pack_id = ADDON.getAddonInfo("id")
     for name in os.listdir(src):
-        xbmcvfs.copy(os.path.join(src, name), SHORTCUTS_DATA + name)
+        with open(os.path.join(src, name), encoding="utf-8") as f:
+            text = f.read().replace("{PACK_ID}", pack_id)  # the home item that opens this pack's menu
+        out = xbmcvfs.File(SHORTCUTS_DATA + name, "w")
+        out.write(text)
+        out.close()
     # Deleting the hash makes Skin Shortcuts rebuild the menus on next home screen load.
     xbmcvfs.delete(SHORTCUTS_DATA + SKIN + ".hash")
 

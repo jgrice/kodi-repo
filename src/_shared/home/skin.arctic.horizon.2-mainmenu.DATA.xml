@@ -32,4 +32,12 @@
         <thumb />
         <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.settings",return)</action>
     </shortcut>
+    <shortcut>
+        <label>Justin's Pack</label>
+        <label2>Setup</label2>
+        <defaultID>jgricepack</defaultID>
+        <icon>special://skin/extras/icons/toolbox.png</icon>
+        <thumb />
+        <action>RunScript({PACK_ID})</action>
+    </shortcut>
 </shortcuts>
