@@ -117,14 +117,34 @@ POV_FOLDER_VIEW = "500"
 VIEWTYPES_FILE = "special://profile/addon_data/script.skinvariables/%s-viewtypes.json" % SKIN
 
 
-def pov_folder_view_set():
+def read_viewtypes():
+    """Skin Variables' saved views for Arctic Horizon 2, or None until the skin has made the file."""
+    if not xbmcvfs.exists(VIEWTYPES_FILE):
+        return None
     try:
         f = xbmcvfs.File(VIEWTYPES_FILE)
         data = json.loads(f.read() or "{}")
         f.close()
+        return data
     except Exception:
+        return None
+
+
+def set_pov_folder_view():
+    """Give POV's folder menus their own view. Returns True when it is in place.
+    Writes Skin Variables' file directly (its own 'pick a view' call errors when given
+    a view id), then has it rebuild the skin's view rules, which reloads the skin once."""
+    data = read_viewtypes()
+    if data is None:
         return False
-    return data.get("plugin.video.pov", {}).get("none") == POV_FOLDER_VIEW
+    if data.get("plugin.video.pov", {}).get("none") == POV_FOLDER_VIEW:
+        return True
+    data.setdefault("plugin.video.pov", {})["none"] = POV_FOLDER_VIEW
+    f = xbmcvfs.File(VIEWTYPES_FILE, "w")
+    f.write(json.dumps(data))
+    f.close()
+    xbmc.executebuiltin("RunScript(script.skinvariables,action=buildviews,force=True)")
+    return True
 
 
 def apply_skin_settings():
@@ -134,11 +154,7 @@ def apply_skin_settings():
     for name in SKIN_BOOLS:
         if not xbmc.getCondVisibility("Skin.HasSetting(%s)" % name):
             xbmc.executebuiltin("Skin.SetBool(%s)" % name)
-    if not pov_folder_view_set():
-        # Saves the view and rebuilds the skin's view rules (this reloads the skin once).
-        xbmc.executebuiltin("RunScript(script.skinvariables,action=buildviews,contentid=none,"
-                            "pluginname=plugin.video.pov,viewid=%s)" % POV_FOLDER_VIEW)
-    return True
+    return set_pov_folder_view()
 
 
 def switch_to_skin():

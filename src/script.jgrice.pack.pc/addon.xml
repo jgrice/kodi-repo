@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.jgrice.pack.pc" name="Justin's Pack (PC)" version="1.3.4" provider-name="jgrice">
+<addon id="script.jgrice.pack.pc" name="Justin's Pack (PC)" version="1.3.5" provider-name="jgrice">
     <!-- Everything listed here is installed (and kept updated) when the pack is installed.
          To change what every device gets: edit this list, bump version above, run build.py, push. -->
     <requires>
