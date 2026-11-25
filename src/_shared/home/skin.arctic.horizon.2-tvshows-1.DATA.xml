@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+    <shortcut>
+        <label>Next Episodes</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_next_episode",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Continue Watching</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_in_progress_episode",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Trakt Watchlist</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=trakt_watchlist",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Trending This Week</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_trending",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Popular</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_popular",return)</action>
+    </shortcut>
+</shortcuts>

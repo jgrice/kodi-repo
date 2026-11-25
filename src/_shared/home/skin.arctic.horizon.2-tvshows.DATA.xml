@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+    <shortcut>
+        <label>Genres</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.genres&amp;menu_type=tvshow",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Networks</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.networks&amp;menu_type=tvshow",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Because You Watched</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.because_you_watched&amp;menu_type=tvshow",return)</action>
+    </shortcut>
+</shortcuts>

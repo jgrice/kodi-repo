@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+    <shortcut>
+        <label>Genres</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.genres&amp;menu_type=movie",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Years</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.years&amp;menu_type=movie",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Because You Watched</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=navigator.because_you_watched&amp;menu_type=movie",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Oscar Winners</label>
+        <label2>POV</label2>
+        <icon>DefaultFolder.png</icon>
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_oscar_winners",return)</action>
+    </shortcut>
+</shortcuts>
