@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.jgrice" name="Justin's Kodi Repo" version="1.2.1" provider-name="jgrice">
+<addon id="repository.jgrice" name="Justin's Kodi Repo" version="1.2.2" provider-name="jgrice">
     <extension point="xbmc.addon.repository" name="Justin's Kodi Repo">
-        <!-- Packs plus mirrored copies of Arctic Horizon 2 and its helpers -->
+        <!-- Our own add-ons (the packs) -->
         <dir>
             <info compressed="false">{SITE_URL}addons.xml</info>
             <checksum>{SITE_URL}addons.xml.md5</checksum>
             <datadir zip="true">{SITE_URL}</datadir>
         </dir>
-        <!-- POV + Magneto come straight from their author's repo (not copied here) -->
+        <!-- Upstream: POV + Magneto (kodifitzwell's repo) -->
         <dir minversion="19.0.0">
             <info compressed="false">https://raw.githubusercontent.com/kodifitzwell/repo/master/packages/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/kodifitzwell/repo/master/packages/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/kodifitzwell/repo/master/</datadir>
+        </dir>
+        <!-- Upstream: Arctic Horizon 2 and its helpers (Hooty's repo) -->
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/Goldenfreddy0703/repository.hooty/master/repo/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Goldenfreddy0703/repository.hooty/master/repo/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/Goldenfreddy0703/repository.hooty/master/repo/zips/</datadir>
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
