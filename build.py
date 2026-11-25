@@ -47,7 +47,9 @@ def build_own(out):
         zpath = dest / f"{aid}-{ver}.zip"
         files = [(f, folder) for f in folder.rglob("*")]
         if not aid.startswith("repository.") and SHARED.exists():
-            files += [(f, SHARED) for f in SHARED.rglob("*")]
+            # Shared files, unless the pack has its own file at the same path (pack wins).
+            own = {f.relative_to(folder) for f in folder.rglob("*")}
+            files += [(f, SHARED) for f in SHARED.rglob("*") if f.relative_to(SHARED) not in own]
         with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
             for f, base in sorted(files):
                 if f.is_file() and "__pycache__" not in f.parts:

@@ -1,8 +1,35 @@
 {
   "label": "PC",
+  "cache_by_ram": false,
   "settings": {
     "filecache.memorysize": 512,
     "filecache.readfactor": 600,
-    "addons.updatemode": 0
+    "addons.updatemode": 0,
+    "myvideos.extractthumb": false,
+    "myvideos.extractflags": false,
+    "lookandfeel.enablerssfeeds": false,
+    "locale.audiolanguage": "English",
+    "locale.subtitlelanguage": "none"
+  },
+  "pov": {
+    "auto_play_movie": "false",
+    "auto_play_episode": "false",
+    "auto_resume_movie": "0",
+    "auto_resume_episode": "0",
+    "autoscrape_next_episode": "true",
+    "subtitles.subs_action": "0",
+    "subtitles.auto_enable": "false",
+    "widget_hide_watched": "true",
+    "debug.enabled": "false"
+  },
+  "disable_addons": [],
+  "alternatives": {
+    "locale.subtitlelanguage": [
+      "forced_only"
+    ],
+    "locale.audiolanguage": [
+      "en",
+      "eng"
+    ]
   }
 }

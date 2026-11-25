@@ -1,8 +1,39 @@
 {
   "label": "Fire Stick",
+  "cache_by_ram": true,
   "settings": {
-    "filecache.memorysize": 128,
     "filecache.readfactor": 600,
-    "addons.updatemode": 0
+    "addons.updatemode": 0,
+    "myvideos.extractthumb": false,
+    "myvideos.extractflags": false,
+    "lookandfeel.enablerssfeeds": false,
+    "locale.audiolanguage": "English",
+    "locale.subtitlelanguage": "none",
+    "videoplayer.adjustrefreshrate": 2
+  },
+  "pov": {
+    "auto_play_movie": "false",
+    "auto_play_episode": "false",
+    "auto_resume_movie": "0",
+    "auto_resume_episode": "0",
+    "autoscrape_next_episode": "true",
+    "subtitles.subs_action": "0",
+    "subtitles.auto_enable": "false",
+    "widget_hide_watched": "true",
+    "debug.enabled": "false",
+    "page_limit": "40"
+  },
+  "disable_addons": [
+    "service.xbmc.versioncheck"
+  ],
+  "advancedsettings": "<advancedsettings version=\"1.0\">\n  <!-- Smaller cached artwork: faster scrolling, less RAM and storage on Fire Stick -->\n  <imageres>540</imageres>\n  <fanartres>720</fanartres>\n</advancedsettings>\n",
+  "alternatives": {
+    "locale.subtitlelanguage": [
+      "forced_only"
+    ],
+    "locale.audiolanguage": [
+      "en",
+      "eng"
+    ]
   }
 }

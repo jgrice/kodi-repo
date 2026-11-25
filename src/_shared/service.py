@@ -1,7 +1,8 @@
-"""Justin's Pack first-run service.
+"""Justin's Pack service.
 
-Kodi starts this right after the pack is installed (and at every login). If this
-device hasn't been set up yet, it waits for Kodi to be idle, then offers setup.
+Kodi starts this right after the pack is installed or updated, and at every login.
+- Device not set up yet: once Kodi is idle, offer setup.
+- Pack updated since setup: offer to apply the new version's settings (asked once per version).
 """
 import xbmc
 
@@ -22,5 +23,8 @@ def wait_until_idle():
     return True
 
 
-if not packlib.setup_done() and wait_until_idle():
-    packlib.menu_first_run()
+if not packlib.setup_done():
+    if wait_until_idle():
+        packlib.menu_first_run()
+elif packlib.applied_version() != packlib.VERSION and wait_until_idle():
+    packlib.offer_updated_settings()

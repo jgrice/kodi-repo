@@ -7,8 +7,8 @@ A personal Kodi repository that installs a lean POV-based setup (POV, Magneto, A
 | Add-on | What it does |
 |---|---|
 | `repository.jgrice` | Your repo. Your repo. Also points Kodi at kodifitzwell's repo (POV, Magneto) and Hooty's repo (Arctic Horizon 2 and its helpers), so they install and update straight from their sources. |
-| `script.jgrice.pack.firestick` ("Justin's Pack (Fire Stick)") | Empty add-on whose `<requires>` list is the add-on set: **POV + Magneto + Arctic Horizon 2**. Opening it sets up the device (128 MB cache, 6x read factor, safe update mode, POV home screen) and has a TorBox / Trakt sign-in shortcut. |
-| `script.jgrice.pack.pc` ("Justin's Pack (PC)") | Same add-on set for Windows, with a 512 MB cache. |
+| `script.jgrice.pack.firestick` ("Justin's Pack (Fire Stick)") | Empty add-on whose `<requires>` list is the add-on set: **POV + Magneto + Arctic Horizon 2**. Setup sizes the cache to the stick's RAM (64 MB on 1 GB sticks, 128 MB on 2 GB), uses smaller artwork, 3 widget rows per menu, refresh-rate matching, English audio, subtitles off, and POV resume/next-episode prompts. Also has a TorBox / Trakt sign-in shortcut. |
+| `script.jgrice.pack.pc` ("Justin's Pack (PC)") | Same add-on set for Windows: 512 MB cache, 5 widget rows per menu, same audio/subtitle/POV defaults. |
 
 ## One-time setup (GitHub Pages)
 
@@ -35,7 +35,8 @@ Choose **Reset home screen** any time to go back to the standard layout after ex
 Each pack lives in its own folder under `src/`:
 
 - `addon.xml`: the `<import>` list is the add-on set for that device type. To add an add-on from a new source, also add that source's `<dir>` to `src/repository.jgrice/addon.xml`.
-- `settings.json`: the Kodi settings the pack applies when opened.
+- `settings.json`: the device profile: Kodi settings, POV settings, add-ons to disable, optional `advancedsettings.xml` (documented at the top of `src/_shared/packlib.py`). When a pack update changes these, devices get a one-time prompt to apply them.
+- `home/` (optional): files here replace the shared home layout files of the same name (the Fire Stick pack uses this for its 3-row widget lists).
 
 `src/_shared/` is copied into every pack by `build.py`: `packlib.py` (setup logic), `default.py` (the pack menu), `service.py` (first-run Welcome prompt) and `home/` (the Arctic Horizon 2 home layout, as Skin Shortcuts files). Edit the `*.DATA.xml` files there to change the home menu items (`mainmenu`), their shortcut rows (`movies`, `tvshows`) and widget rows (`movies-1`, `tvshows-1`). Each item's `<action>` is a POV path.
 
