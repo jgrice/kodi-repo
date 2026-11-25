@@ -32,7 +32,7 @@
         <platform>all</platform>
     </extension>
 </addon>
-<addon id="script.jgrice.pack.firestick" name="Justin's Pack (Fire Stick)" version="1.1.0" provider-name="jgrice">
+<addon id="script.jgrice.pack.firestick" name="Justin's Pack (Fire Stick)" version="1.2.0" provider-name="jgrice">
     <!-- Everything listed here is installed (and kept updated) when the pack is installed.
          To change what every device gets: edit this list, bump version above, run build.py, push. -->
     <requires>
@@ -44,13 +44,14 @@
     <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>
     </extension>
+    <extension point="xbmc.service" library="service.py" start="login"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Justin's add-on set for Fire TV Stick</summary>
         <description lang="en_GB">Installs POV, its scrapers and the Arctic Horizon 2 skin. Open it from Program add-ons to set up this Fire Stick (settings and POV home screen) and sign in to TorBox / Trakt by QR code.</description>
         <platform>all</platform>
     </extension>
 </addon>
-<addon id="script.jgrice.pack.pc" name="Justin's Pack (PC)" version="1.1.0" provider-name="jgrice">
+<addon id="script.jgrice.pack.pc" name="Justin's Pack (PC)" version="1.2.0" provider-name="jgrice">
     <!-- Everything listed here is installed (and kept updated) when the pack is installed.
          To change what every device gets: edit this list, bump version above, run build.py, push. -->
     <requires>
@@ -62,6 +63,7 @@
     <extension point="xbmc.python.script" library="default.py">
         <provides>executable</provides>
     </extension>
+    <extension point="xbmc.service" library="service.py" start="login"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Justin's add-on set for Windows PC</summary>
         <description lang="en_GB">Installs POV, its scrapers and the Arctic Horizon 2 skin. Open it from Program add-ons to set up this PC (settings and POV home screen) and sign in to TorBox / Trakt by QR code.</description>
