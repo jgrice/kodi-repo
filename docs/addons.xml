@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.jgrice" name="Justin's Kodi Repo" version="1.2.0" provider-name="jgrice">
+<addon id="repository.jgrice" name="Justin's Kodi Repo" version="1.2.1" provider-name="jgrice">
     <extension point="xbmc.addon.repository" name="Justin's Kodi Repo">
-        <!-- Packs plus mirrored copies of POV, Magneto, Arctic Horizon 2 and their dependencies -->
+        <!-- Packs plus mirrored copies of Arctic Horizon 2 and its helpers -->
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/jgrice/kodi-repo/main/docs/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/jgrice/kodi-repo/main/docs/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/jgrice/kodi-repo/main/docs/</datadir>
+        </dir>
+        <!-- POV + Magneto come straight from their author's repo (not copied here) -->
+        <dir minversion="19.0.0">
+            <info compressed="false">https://raw.githubusercontent.com/kodifitzwell/repo/master/packages/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/kodifitzwell/repo/master/packages/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/kodifitzwell/repo/master/</datadir>
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
@@ -52,18 +58,6 @@
         <description lang="en_GB">Installs POV, its scrapers and the Arctic Horizon 2 skin. Open it from Program add-ons to set up this PC (settings and POV home screen) and sign in to TorBox / Trakt by QR code.</description>
         <platform>all</platform>
     </extension>
-</addon>
-<addon id="plugin.video.pov" version="6.11.04" name="POV" provider-name="kodifitzwell">
-	<requires>
-		<import addon="xbmc.python" version="3.0.0" />
-		<import addon="script.module.requests" />
-	</requires>
-	<extension point="xbmc.python.pluginsource">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>What you like to watch.[CR]</summary>
-	</extension>
 </addon>
 <addon id="plugin.video.themoviedb.helper" version="6.22.7" name="TMDb Helper" provider-name="jurialmunkey">
 <requires>
@@ -168,19 +162,6 @@
       <icon>icon.png</icon>
     </assets>
   </extension>
-</addon>
-<addon id="script.module.magneto" version="6.11.01" name="Magneto Module" provider-name="Magneto">
-	<requires>
-		<import addon="xbmc.python" version="3.0.0" />
-		<import addon="script.module.requests" />
-		<import addon="plugin.video.pov" version="6.10.16" />
-	</requires>
-	<extension point="xbmc.python.pluginsource">
-		<provides>executable video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>A module to query magnet providers.[CR]</summary>
-	</extension>
 </addon>
 <addon id="script.skinvariables" version="2.3.11" name="Skin Variables" provider-name="jurialmunkey">
 <requires>

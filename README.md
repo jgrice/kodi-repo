@@ -6,7 +6,7 @@ A personal Kodi repository that installs a lean POV-based setup (POV, Magneto, A
 
 | Add-on | What it does |
 |---|---|
-| `repository.jgrice` | Your repo. Lists only your packs plus mirrored copies of POV, Magneto, Arctic Horizon 2 and their dependencies (see Mirroring below). |
+| `repository.jgrice` | Your repo. Lists your packs, mirrored copies of Arctic Horizon 2 and its helpers (see Mirroring below), and points at kodifitzwell's repo on GitHub for POV and Magneto (not copied here). |
 | `script.jgrice.pack.firestick` ("Justin's Pack (Fire Stick)") | Empty add-on whose `<requires>` list is the add-on set: **POV + Magneto + Arctic Horizon 2**. Opening it sets up the device (128 MB cache, 6x read factor, safe update mode, POV home screen) and has a TorBox / Trakt sign-in shortcut. |
 | `script.jgrice.pack.pc` ("Justin's Pack (PC)") | Same add-on set for Windows, with a 512 MB cache. |
 
@@ -51,6 +51,6 @@ If you change `repository.jgrice` itself, bump its version too.
 
 `build.py` copies the add-ons listed in `config.json` → `mirror.addons` (and every dependency their upstream repos provide) into `docs/`, so browsing the repo in Kodi shows only what the packs use. Dependencies not found upstream (e.g. `script.module.requests`, `script.skinshortcuts`) install from Kodi's official repo.
 
-A GitHub Action (`.github/workflows/update-mirror.yml`) runs `build.py` every day at 08:17 UTC and commits any new upstream versions, so devices get POV / skin updates automatically. To update right away: GitHub > Actions > "Update mirrored add-ons" > Run workflow.
+A GitHub Action (`.github/workflows/update-mirror.yml`) runs `build.py` every day at 08:17 UTC and commits any new upstream versions, so devices get skin updates automatically (POV and Magneto update straight from kodifitzwell's repo). To update right away: GitHub > Actions > "Update mirrored add-ons" > Run workflow.
 
 To mirror another add-on: add its id to `mirror.addons` (and its upstream repo to `mirror.sources` if new), add the `<import>` to the packs, bump the pack versions, run `build.py`, push.
