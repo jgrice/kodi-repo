@@ -1,5 +1,24 @@
 {
   "site_url": "https://jgrice.github.io/kodi-repo/",
   "data_url": "https://raw.githubusercontent.com/jgrice/kodi-repo/main/docs/",
-  "output_dir": "docs"
+  "output_dir": "docs",
+  "mirror": {
+    "addons": [
+      "plugin.video.pov",
+      "script.module.magneto",
+      "skin.arctic.horizon.2"
+    ],
+    "sources": [
+      {
+        "name": "kodifitzwell (POV, Magneto)",
+        "info": "https://raw.githubusercontent.com/kodifitzwell/repo/master/packages/addons.xml",
+        "datadir": "https://raw.githubusercontent.com/kodifitzwell/repo/master/"
+      },
+      {
+        "name": "Hooty (Arctic Horizon 2, TMDb Helper)",
+        "info": "https://raw.githubusercontent.com/Goldenfreddy0703/repository.hooty/master/repo/zips/addons.xml",
+        "datadir": "https://raw.githubusercontent.com/Goldenfreddy0703/repository.hooty/master/repo/zips/"
+      }
+    ]
+  }
 }
