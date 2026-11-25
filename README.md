@@ -38,7 +38,7 @@ Each pack lives in its own folder under `src/`:
 - `settings.json`: the device profile: Kodi settings, POV settings, add-ons to disable, optional `advancedsettings.xml` (documented at the top of `src/_shared/packlib.py`). When a pack update changes these, devices get a one-time prompt to apply them.
 - `home/` (optional): files here replace the shared home layout files of the same name (the Fire Stick pack uses this for its 3-row widget lists).
 
-`src/_shared/` is copied into every pack by `build.py`: `packlib.py` (setup logic), `default.py` (the pack menu), `service.py` (first-run Welcome prompt) and `home/` (the Arctic Horizon 2 home layout, as Skin Shortcuts files). Edit the `*.DATA.xml` files there to change the home menu items (`mainmenu`), their shortcut rows (`movies`, `tvshows`) and widget rows (`movies-1`, `tvshows-1`). Each item's `<action>` is a POV path.
+`src/_shared/` is copied into every pack by `build.py`: `packlib.py` (setup logic), `default.py` (the pack menu), `service.py` (first-run Welcome prompt) and `home/` (the Arctic Horizon 2 home layout, as Skin Shortcuts files). Edit the `*.DATA.xml` files there to change the home menu items (`mainmenu`), their shortcut rows (`movies`, `tvshows`) and widget rows (`movies-1`, `tvshows-1`). Each item's `<action>` is a POV path (the POV Settings item opens POV's settings).
 
 1. Edit the pack you want to change (or both).
 2. Bump `version=` in that pack's `addon.xml` (e.g. 1.0.0 to 1.0.1).

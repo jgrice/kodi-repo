@@ -217,6 +217,7 @@ def menu():
         "Set up this device",
         "Sign in to TorBox / Trakt",
         "Reset home screen",
+        "POV settings",
     ])
     if choice == 0:
         if set_up_device():
@@ -225,6 +226,8 @@ def menu():
         sign_in()
     elif choice == 2:
         reset_home()
+    elif choice == 3:
+        xbmc.executebuiltin("Addon.OpenSettings(plugin.video.pov)")
 
 
 def wait_for_quiet(seconds=3):
