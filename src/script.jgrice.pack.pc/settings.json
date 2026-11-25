@@ -20,7 +20,9 @@
     "subtitles.subs_action": "0",
     "subtitles.auto_enable": "false",
     "widget_hide_watched": "true",
-    "debug.enabled": "false"
+    "debug.enabled": "false",
+    "nextep.sort_type": "1",
+    "nextep.sort_order": "0"
   },
   "disable_addons": [],
   "alternatives": {

@@ -21,7 +21,9 @@
     "subtitles.auto_enable": "false",
     "widget_hide_watched": "true",
     "debug.enabled": "false",
-    "page_limit": "40"
+    "page_limit": "40",
+    "nextep.sort_type": "1",
+    "nextep.sort_order": "0"
   },
   "disable_addons": [
     "service.xbmc.versioncheck"

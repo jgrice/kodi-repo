@@ -111,6 +111,20 @@ def install_home_layout():
 # Arctic Horizon 2 skin options set on every device. Home.DisableSearchMenu hides the
 # skin's own search icon, since the home menu has POV's Search.
 SKIN_BOOLS = ("Home.DisableSearchMenu",)
+# View for POV's folder menus (content "none"): 500 = Square Wall, smaller tiles, more per screen.
+# Stored per plugin by script.skinvariables, so other add-ons keep the skin default.
+POV_FOLDER_VIEW = "500"
+VIEWTYPES_FILE = "special://profile/addon_data/script.skinvariables/%s-viewtypes.json" % SKIN
+
+
+def pov_folder_view_set():
+    try:
+        f = xbmcvfs.File(VIEWTYPES_FILE)
+        data = json.loads(f.read() or "{}")
+        f.close()
+    except Exception:
+        return False
+    return data.get("plugin.video.pov", {}).get("none") == POV_FOLDER_VIEW
 
 
 def apply_skin_settings():
@@ -120,6 +134,10 @@ def apply_skin_settings():
     for name in SKIN_BOOLS:
         if not xbmc.getCondVisibility("Skin.HasSetting(%s)" % name):
             xbmc.executebuiltin("Skin.SetBool(%s)" % name)
+    if not pov_folder_view_set():
+        # Saves the view and rebuilds the skin's view rules (this reloads the skin once).
+        xbmc.executebuiltin("RunScript(script.skinvariables,action=buildviews,contentid=none,"
+                            "pluginname=plugin.video.pov,viewid=%s)" % POV_FOLDER_VIEW)
     return True
 
 
