@@ -25,8 +25,8 @@ If you use a different repo name, change `site_url` in `config.json` and rebuild
 2. Settings > File manager > Add source: `https://jgrice.github.io/kodi-repo/`, name it `jgrice`.
 3. Add-ons > Install from zip file > `jgrice` > `repository.jgrice-….zip`.
 4. Add-ons > Install from repository > Justin's Kodi Repo > Program add-ons > **Justin's Pack (Fire Stick)** or **Justin's Pack (PC)** > Install. Kodi pulls in POV, Magneto and Arctic Horizon 2 with their dependencies.
-5. Open the pack from Program add-ons and choose **Set up this device**. It applies the settings, installs the POV home screen and switches to Arctic Horizon 2 (answer **Yes** when Kodi asks to keep the skin).
-6. Open the pack again and choose **Sign in to TorBox / Trakt**. This opens POV's My Services list: pick TorBox, scan the QR code with your phone (or enter the code at the address shown), then do the same for Trakt. No keys or tokens ship in the pack.
+5. A **Welcome** prompt appears right after the pack installs (and again at each Kodi start until setup is done). Choose **Set up**; or later, open the pack from Program add-ons and choose **Set up this device**. It applies the settings, installs the POV home screen and switches to Arctic Horizon 2 (answer **Yes** when Kodi asks to keep the skin).
+6. After setup it offers to sign in; or open the pack and choose **Sign in to TorBox / Trakt**. This opens POV's My Services list: pick TorBox, scan the QR code with your phone (or enter the code at the address shown), then do the same for Trakt. No keys or tokens ship in the pack.
 
 Choose **Reset home screen** any time to go back to the standard layout after experimenting. To sign a device out (e.g. a stick you're giving away), use the same menu and pick the signed-in service.
 
@@ -37,7 +37,7 @@ Each pack lives in its own folder under `src/`:
 - `addon.xml`: the `<import>` list is the add-on set for that device type. To add an add-on from a new source, also add that source's `<dir>` to `src/repository.jgrice/addon.xml`.
 - `settings.json`: the Kodi settings the pack applies when opened.
 
-`src/_shared/` is copied into every pack by `build.py`: `default.py` (the pack menu) and `home/` (the Arctic Horizon 2 home layout, as Skin Shortcuts files). Edit the `*.DATA.xml` files there to change the home menu items (`mainmenu`), their shortcut rows (`movies`, `tvshows`) and widget rows (`movies-1`, `tvshows-1`). Each item's `<action>` is a POV path.
+`src/_shared/` is copied into every pack by `build.py`: `packlib.py` (setup logic), `default.py` (the pack menu), `service.py` (first-run Welcome prompt) and `home/` (the Arctic Horizon 2 home layout, as Skin Shortcuts files). Edit the `*.DATA.xml` files there to change the home menu items (`mainmenu`), their shortcut rows (`movies`, `tvshows`) and widget rows (`movies-1`, `tvshows-1`). Each item's `<action>` is a POV path.
 
 1. Edit the pack you want to change (or both).
 2. Bump `version=` in that pack's `addon.xml` (e.g. 1.0.0 to 1.0.1).
